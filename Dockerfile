@@ -11,10 +11,13 @@ RUN apk update \
     openrc
 
 # Install Docker
-RUN curl -sSL get.docker.com | sh
+RUN apk add --update docker
+RUN apk add docker-cli-compose
+RUN rc-update add docker default
+
 # Clone repository
 RUN git clone -b 2.0 https://github.com/QingdaoU/OnlineJudgeDeploy.git
 
 WORKDIR /OnlineJudgeDeploy
 
-CMD ["sh", "-c", "docker compose up -d"]
+ENTRYPOINT ["./render-build.sh"]
