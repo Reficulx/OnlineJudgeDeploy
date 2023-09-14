@@ -14,7 +14,7 @@ RUN apk update \
 RUN apk add --update docker
 RUN apk add docker-cli-compose
 RUN rc-update add docker default
-RUN service docker start
+# RUN service docker start
 
 # Clone repository
 RUN git clone -b 2.0 https://github.com/QingdaoU/OnlineJudgeDeploy.git
